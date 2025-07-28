@@ -1,9 +1,10 @@
-# 🎯 Projeto analise de dados
+# 🎯 Projeto analise de dados (excel)
 
 Este projeto implementa uma aplicação para análise de vendas utilizando Python, Pandas e Streamlit.
 O sistema permite visualizar dados de vendas mensais a partir de planilhas Excel, destacando quais vendedores atingiram as metas estabelecidas, além de fornecer gráficos coloridos para facilitar a análise.
 
 A aplicação conta também com uma versão para execução em terminal, sem interface web.
+
 
 ---
 
