@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 from pathlib import Path
 import os
 
-MESES = ['janeiro', 'fevereiro', 'marco', 'abril', 'maio', 'junho']
-META_VENDA = 55000
+meses = ['janeiro', 'fevereiro', 'marco', 'abril', 'maio', 'junho']
+meta_venda = 55000
 
 
 def carregar_planilha(mes):
@@ -20,7 +20,7 @@ def carregar_planilha(mes):
 
 
 def mostrar_geral():
-    for mes in MESES:
+    for mes in meses:
         tabela = carregar_planilha(mes)
         if tabela is not None:
             print(f"\n{mes.upper()}:")
@@ -28,7 +28,7 @@ def mostrar_geral():
 
 
 def mostrar_vendedores():
-    for mes in MESES:
+    for mes in meses:
         tabela = carregar_planilha(mes)
         if tabela is not None:
             print(f"\n{mes.upper()} - VENDEDORES:")
@@ -38,18 +38,18 @@ def mostrar_vendedores():
 def relatorio_meta():
     print("\nMetas alcançadas por vendedores:")
     print("Selecione o mês para visualizar o relatório:")
-    for i, mes in enumerate(MESES, start=1):
+    for i, mes in enumerate(meses, start=1):
         print(f"[{i}] {mes.title()}")
     try:
         escolha = int(input("Digite o número do mês: "))
-        mes_escolhido = MESES[escolha - 1]
+        mes_escolhido = meses[escolha - 1]
     except (ValueError, IndexError):
         print("Opção inválida.")
         return
 
     tabela = carregar_planilha(mes_escolhido)
     if tabela is not None:
-        atingiram_meta = tabela[tabela['VALOR'] > META_VENDA]
+        atingiram_meta = tabela[tabela['VALOR'] > meta_venda]
         if not atingiram_meta.empty:
             atingiram_meta = atingiram_meta.sort_values(by='VALOR', ascending=False)
             for _, linha in atingiram_meta.iterrows():
@@ -68,7 +68,7 @@ def plotar_grafico(dados, mes):
     # Definir cores manuais
     cores = []
     for valor in dados_ordenados['VALOR']:
-        if valor > META_VENDA * 1.2:
+        if valor > meta_venda * 1.2:
             cores.append('green')  # Acima de 66k
         else:
             cores.append('yellow')  # Entre 55k e 66k
